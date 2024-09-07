@@ -1,3 +1,62 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    *{
+        /* outline: 1px solid red; */
+    }
+    body {
+        @apply bg-primary-4;
+    }
+}
+
+@layer components {
+    /* Button Variants */
+    /* primary */
+    .btn.btn_primary{
+        @apply bg-primary-1 text-grey-3 hover:bg-primary-2;
+    }
+    .btn.btn_primary_ln {
+        @apply text-grey-3 border-solid border-[2px] border-primary-1 hover:bg-primary-1;
+    }
+    /* tertiary */
+    .btn.btn_tertiary{
+        @apply bg-tertiary-3 text-quaternary-1 hover:bg-tertiary-5;
+    }
+    .btn.btn_tertiary_ln {
+        @apply text-tertiary-3 border-solid border-[2px] border-tertiary-3 hover:bg-tertiary-3 hover:text-white-4;
+    }
+    /* quaternary */
+    .btn.btn_quaternary{
+        @apply bg-quaternary-3 text-grey-2 hover:bg-quaternary-5;
+    }
+    .btn.btn_quaternary_ln {
+        @apply text-white-2 border-solid border-[2px] border-quaternary-3 hover:bg-quaternary-3;
+    }
+    
+}
+
+@layer utilities {
+    .blend-image {
+        mix-blend-mode: multiply;
+    }
+    .text-clip_quaternary-tertiary {
+        background-image: linear-gradient(to left, #a259ff, #6058ff);
+        color: transparent;
+        background-clip: text;
+    }
+    .p_formatted {@apply px-4 md:px-8;}
+    /* bootstrap icon formatted */
+    .icon {@apply text-base font-medium sm:text-lg md:text-xl md:font-semibold}
+    /* Untuk semua browser */
+    .hidde_scroller {
+    overflow-x: scroll; /* Aktifkan scrolling */
+    scrollbar-width: none; /* Firefox - sembunyikan scrollbar */
+    }
+
+    .hidde_scroller::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, dan Opera - sembunyikan scrollbar */
+    }
+
+}
