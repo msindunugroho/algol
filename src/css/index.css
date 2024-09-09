@@ -22,10 +22,10 @@
     }
     /* tertiary */
     .btn.btn_tertiary{
-        @apply bg-tertiary-3 text-quaternary-1 hover:bg-tertiary-5;
+        @apply bg-tertiary-3 text-white-1 hover:bg-tertiary-5;
     }
     .btn.btn_tertiary_ln {
-        @apply text-tertiary-3 border-solid border-[2px] border-tertiary-3 hover:bg-tertiary-3 hover:text-white-4;
+        @apply text-tertiary-3 border-solid border-[2px] border-tertiary-3 hover:bg-tertiary-3 hover:text-white-1;
     }
     /* quaternary */
     .btn.btn_quaternary{

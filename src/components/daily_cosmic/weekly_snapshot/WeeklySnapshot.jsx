@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import Button from "../../button/Button";
+import {Button} from "../../button/Button";
 import assets from "../../../assets/assets";
 
 const WeeklySnapshot = ({data_snapshot, onDateClick}) => {

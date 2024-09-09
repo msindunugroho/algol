@@ -22,7 +22,7 @@ const DailyCosmicSnapshot = () => {
     
             // Function to filter and return today or yesterday's data
             function getDataFromLocalStorage(dateType) {
-                const datas = JSON.parse(localStorage.getItem("last_week_data"));
+                const datas = JSON.parse(localStorage.getItem("APOD"));
                 if (datas) {
                     for (let data of datas) {
                         if (dateType == "today" && data.date === formattedCurrentDate) {
@@ -49,7 +49,7 @@ const DailyCosmicSnapshot = () => {
                     }
 
                     const resultData = await response.json();
-                    localStorage.setItem("last_week_data", JSON.stringify(resultData));
+                    localStorage.setItem("APOD", JSON.stringify(resultData));
                     todayDataAPI = getDataFromLocalStorage("today");
 
                     if (!todayDataAPI) {
@@ -70,7 +70,7 @@ const DailyCosmicSnapshot = () => {
                                 throw new Error(`Error fetching yesterday's data: ${response.status}`);
                             }
                             const resultData = await response.json();
-                            localStorage.setItem("last_week_data", JSON.stringify(resultData));
+                            localStorage.setItem("APOD", JSON.stringify(resultData));
                             
                             // Try to set yesterday data from fresh API result
                             todayDataAPI = getDataFromLocalStorage("yesterday");
@@ -84,7 +84,7 @@ const DailyCosmicSnapshot = () => {
             // If todayDataAPI exists, set it in the state
             if (todayDataAPI) {
                 setTodayData(todayDataAPI);
-                setLastweekData(JSON.parse(localStorage.getItem("last_week_data")))
+                setLastweekData(JSON.parse(localStorage.getItem("APOD")))
             }
     
         };

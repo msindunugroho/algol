@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import assets from "../../../assets/assets";
-import Button from "../../button/Button";
+import {Button} from "../../button/Button";
 
 const DailySnapshot = ({data_snapshot, dropdown_download_snapshot, isDropdown_download, detail_snapshot, isDisplayDetail}) => {
     const {images} = assets;
