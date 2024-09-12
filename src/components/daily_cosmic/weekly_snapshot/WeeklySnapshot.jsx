@@ -29,7 +29,7 @@ const WeeklySnapshot = ({data_snapshot, onDateClick}) => {
                                                 textContent={"view"}
                                                 btn_type={`btn_quaternary_ln py-1 px-2 md:py-1 md:px-3 text-sm md:text-lg font-normal`}
                                                 onClick={() => handleClick(date)}/>
-                                            <p className="text-xs md:text-base text-dark_grey-1">${date}</p>
+                                            <p className="text-xs md:text-base text-dark_grey-1">{date}</p>
                                         </div>
                                     </div>
                                 </div>

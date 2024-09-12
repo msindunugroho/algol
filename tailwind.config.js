@@ -88,7 +88,8 @@ export default {
         atrBg_tertiary: "0px 0px 200px 200px rgba(96,88,255,0.5);", 
         atrBg_tertiary_lg: "0px 0px 400px 200px rgba(96,88,255,0.5);", 
         atrBg_quaternary: "0px 0px 200px 200px rgba(162,89,255,0.5);", 
-        atrBg_quaternary_lg: "0px 0px 400px 200px rgba(162,89,255,0.5);", 
+        atrBg_quaternary_lg: "0px 0px 400px 200px rgba(162,89,255,0.5);",
+        carousel_circle: "0px 70px 18px -30px rgba(0,11,39,0.75) inset",
       },
       animation:{
         beat: "beat 1.5s ease-out infinite",
