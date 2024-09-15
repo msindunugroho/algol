@@ -19,7 +19,6 @@ const SatelliteMap = ({ tleData }) => {
 
       calculatePosition();
       const interval = setInterval(calculatePosition, 1000); // Update posisi setiap detik
-
       return () => clearInterval(interval); // Cleanup interval ketika komponen di-unmount
     }
   }, [tleData]);

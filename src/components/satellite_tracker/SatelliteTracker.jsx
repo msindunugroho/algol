@@ -8,7 +8,6 @@ const SatelliteTracker = () => {
   const [satelliteData, setSatelliteData] = useState(null);
 
   useFetchData("TLE");
-
   useEffect(() => {
     const storedData = localStorage.getItem("TLE");
     if (storedData) {
