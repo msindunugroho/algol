@@ -53,8 +53,8 @@ const CarouselItem = ({ data, displayCarousel }) => {
             <img src={img} alt="Nebula" className="w-full h-full object-cover object-center z-0" />
             <div className="carousel_body w-full absolute left-0 top-1/2 translate-y-[-50%] px-12 sm:px-16 md:px-20 z-[4]">
                 <h1 className="text-2xl md:text-4xl text-grey-1 font-bold uppercase relative mb-1 md:mb-3">{title}</h1>
-                <p className="sm:w-4/5 md:w-3/4 text-sm md:text-lg text-grey-3">{desc}</p>
-                <div className="space_fact h-max flex md:justify-center gap-2 sm:gap-3 md:gap-5 sm:translate-y-16">
+                <p className="sm:w-5/6 md:w-4/6 text-sm md:text-lg text-grey-3">{desc}</p>
+                <div className="space_fact h-max flex md:justify-center gap-2 sm:gap-3 md:gap-5 translate-y-5 sm:translate-y-10">
                     {
                         space_facts.map((data, index) => {
                             return (

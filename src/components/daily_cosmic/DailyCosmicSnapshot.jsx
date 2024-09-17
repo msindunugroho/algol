@@ -8,39 +8,31 @@ import DailySnapshot from "./daily_snapshot/DailySnapshot";
 import WeeklySnapshot from "./weekly_snapshot/WeeklySnapshot";
 import { useFetchData, useFetchAPODRandom } from "../../hooks/useFetchData"; // Custom hook
 import RandomSnapshot from "./random_snapshot/RandomSnapshot";
-import { sementara } from "../../utils/sementara";
 
 const DailyCosmicSnapshot = () => {
-    const [dropdownDownload, setDropdownDownload] = useState(false);
-    const [displayDetail, setDisplayDetail] = useState(false);
-    const [todayData, setTodayData] = useState(null);
-    const [lastweekData, setLastweekData] = useState(null);
-    const [APODLocalData, setAPODLocalData] = useState(null);
-    const [isFetchAPOD, setIsFetchAPOD] = useState(true);
+    const [dropdownDownload, setDropdownDownload] = useState(false); // state menampilkan element download
+    const [displayDetail, setDisplayDetail] = useState(false); // state untuk menampilkan detail card
+    const [todayData, setTodayData] = useState(null); // state untuk menyimpan data daily snapshot
+    const [lastweekData, setLastweekData] = useState(null); // state untuk menyimpan data APOD seminggu terakhir
+    const [APODLocalData, setAPODLocalData] = useState(null); // state untuk menampung data hasil fetch yang sudah di simpan di local storage 
+    const [isFetchAPOD, setIsFetchAPOD] = useState(true); // state untuk triger ketika user meng-klik component RandomSnapshot
     const [isfetchRandom, setIsFetchRandom] = useState(false); // State untuk memicu fetch acak
     const headerTitle = "Daily Cosmic Snapshot";
 
-
-    // Fetch data APOD biasa atau random berdasarkan isfetchRandom
-    // const {loading: loadingFetchDataAPOD} = useFetchData("APOD", isFetchAPOD);
+    const {loading: loadingFetchDataAPOD} = useFetchData("APOD", isFetchAPOD);
     const {loading:loadingFetchDataRandom} = useFetchAPODRandom("APOD_random", isfetchRandom, 15);
 
     useEffect(() => {
         
     }, [])
 
-    // useEffect(() => {
-    //     const getAPODFromLocal = JSON.parse(localStorage.getItem("APOD"));
-    //     if(!loadingFetchDataAPOD) {
-    //         const {data} = getAPODFromLocal;
-    //         setAPODLocalData(data);
-    //     }
-    // }, [loadingFetchDataAPOD]);
-
     useEffect(() => {
-        setAPODLocalData(sementara)
-    }, [])
-
+        const getAPODFromLocal = JSON.parse(localStorage.getItem("APOD"));
+        if(!loadingFetchDataAPOD) {
+            const {data} = getAPODFromLocal;
+            setAPODLocalData(data);
+        }
+    }, [loadingFetchDataAPOD]);
 
     function getRandomSnapshotHandler() {
         // Reset APODLocalData sebelum memulai fetch baru agar pasti memicu re-render

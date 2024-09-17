@@ -4,6 +4,21 @@ import apiEndpoints from "../utils/apiEndpoints";
 import { useState } from "react";
 
 /**
+ * @param {string} date
+ * @param {string} local_name
+ */
+export const getLocalData = (date, local_name) => {
+    const localData = JSON.parse(localStorage.getItem(local_name));
+    if (localData && date === "today" && localData.date === formattedCurrentDate) {
+        return true;
+    }
+    if (localData && date === "yesterday" && localData.date === formattedYesterdayDate) {
+        return true;
+    }
+    return null;
+};
+
+/**
  * 
  * @param {string} API_name
  * @param {boolean} run 
@@ -14,21 +29,11 @@ export const useFetchData = (API_name, run) => {
     const path = apiEndpoints[API_name]; // Mengambil path sesuai API_name yang diterima
     
     useEffect(() => {
-        const getLocalData = (date) => {
-            const localData = JSON.parse(localStorage.getItem(API_name));
-            if (localData && date === "today" && localData.date === formattedCurrentDate) {
-                return true;
-            }
-            if (localData && date === "yesterday" && localData.date === formattedYesterdayDate) {
-                return true;
-            }
-            return null;
-        };
 
         if(run) {
             console.log('running fetch data APOD')
             const fetchData = async () => {
-                const isLocalDataExist = getLocalData("today");
+                const isLocalDataExist = getLocalData("today", API_name);
                 if(isLocalDataExist) {
                     setLoading(false)
                 } else {
@@ -42,7 +47,7 @@ export const useFetchData = (API_name, run) => {
                         setLoading(false)
                     } catch (error) {
                         console.error(error.message);
-                        const isLocalDataExist = getLocalData("yesterday");
+                        const isLocalDataExist = getLocalData("yesterday", API_name);
                         if(isLocalDataExist) {
                             setLoading(false)
                         } else {
