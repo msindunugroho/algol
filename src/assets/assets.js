@@ -13,13 +13,16 @@ import gallery_link_4 from "./images/gallery_link_4.jpg"
 import page_hightlight_asteroid from "./images/page_hightlight_asteroid.jpg"
 import page_hightlight_sun from "./images/page_hightlight_sun.jpg"
 import bg_footer from "./images/bg_footer.jpg"
-import NASA_logo from "./images/NASA-logo.png"
+import profile_picture from "./images/profile-picture.png"
+
+import NASA_logo from "./svg/NASA-Logo.svg"
+
 
 
 
 const assets = {
-    images: {asteroid_1, asteroid_2, asteroid_3, earth_rm_bg, example_daily_snapshot, carousel_1, carousel_2, carousel_3, gallery_link_1, gallery_link_2, gallery_link_3, gallery_link_4, page_hightlight_asteroid, page_hightlight_sun, bg_footer, NASA_logo},
-    svg:{},
+    images: {asteroid_1, asteroid_2, asteroid_3, earth_rm_bg, example_daily_snapshot, carousel_1, carousel_2, carousel_3, gallery_link_1, gallery_link_2, gallery_link_3, gallery_link_4, page_hightlight_asteroid, page_hightlight_sun, bg_footer, profile_picture},
+    svg:{NASA_logo},
 }
 
 export default assets;

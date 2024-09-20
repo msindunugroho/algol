@@ -8,6 +8,7 @@ import DailySnapshot from "./daily_snapshot/DailySnapshot";
 import WeeklySnapshot from "./weekly_snapshot/WeeklySnapshot";
 import { useFetchData, useFetchAPODRandom } from "../../hooks/useFetchData"; // Custom hook
 import RandomSnapshot from "./random_snapshot/RandomSnapshot";
+import { useCallback } from "react";
 
 const DailyCosmicSnapshot = () => {
     const [dropdownDownload, setDropdownDownload] = useState(false); // state menampilkan element download
@@ -72,11 +73,11 @@ const DailyCosmicSnapshot = () => {
         setDisplayDetail(prevState => !prevState);
     }
 
-    const handleUpdateDate = (newDate) => {
+    const handleUpdateDate = useCallback((newDate) => {
         const updateDate = lastweekData.find((data) => data.date === newDate);
         setTodayData(updateDate);
         console.log(`Updated todayDate: ${updateDate}`);
-    };
+    }, []);
 
     return (
         <section className="daily_cosmic p_formatted">

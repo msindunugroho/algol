@@ -31,7 +31,6 @@ export const useFetchData = (API_name, run) => {
     useEffect(() => {
 
         if(run) {
-            console.log('running fetch data APOD')
             const fetchData = async () => {
                 const isLocalDataExist = getLocalData("today", API_name);
                 if(isLocalDataExist) {
@@ -46,7 +45,6 @@ export const useFetchData = (API_name, run) => {
                         localStorage.setItem(API_name, JSON.stringify({ date: formattedCurrentDate, data: dataResult }));
                         setLoading(false)
                     } catch (error) {
-                        console.error(error.message);
                         const isLocalDataExist = getLocalData("yesterday", API_name);
                         if(isLocalDataExist) {
                             setLoading(false)
@@ -104,7 +102,6 @@ export const useFetchAPODRandom = (API_name, run, count) => {
                     setLoading(false);  // loading selesai
 
                 } catch (error) {
-                    console.error(error.message);
                     setLoading(false);  // set loading ke false pada error juga
                 }
             };

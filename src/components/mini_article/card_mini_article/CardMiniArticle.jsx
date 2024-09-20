@@ -6,7 +6,6 @@ import { Button } from "../../button/Button";
 
 const CardMiniArticle = ({articleData, articleActive, index, activeHandler, isArticleActive, isHidden}) => {
     const {date, explanation, hdurl, title, copyright, url} = articleData;
-    console.log("is active: ", articleActive)
 
     return(
         <div className={`card h-full w-max overflow-hidden bg-primary-3 flex flex-row-reverse ${articleActive? 'w-full':'flex-[1]'} ${isHidden? 'hidden' : ''}`}>

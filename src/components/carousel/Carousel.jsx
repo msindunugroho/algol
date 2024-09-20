@@ -80,7 +80,7 @@ const Carousel = () => {
         setSlideIndex(index)
     }
     return(
-        <div className="carousel relative">
+        <div className="carousel relative mt-16">
         <div className="carousel_container relative bg-secondary-5 w-full h-[350px] sm:h-[400px] md:h-[500px] 
             after:content-[''] after:z-[3] after:absolute after:w-4/5 after:h-full after:bg-gradient-to-r 
             after:from-transparent_dark-9 after:via-transparent_dark-7 after:to-transparent_dark-0 after:top-0 after:left-0">

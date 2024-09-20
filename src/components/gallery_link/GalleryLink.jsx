@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import assets from "../../assets/assets";
-import HeaderComponent from "../header_component/HeaderComponent";
 import Header from "../header/Header";
 
 const GalleryLink = () => {

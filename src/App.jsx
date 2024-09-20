@@ -9,6 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<PageHome/>}/>
         <Route path="/gallery" element={<AlgolGallery/>}/>
+        <Route path="/near-earth_objects" element={<AlgolGallery/>}/>
       </Routes>
     </Router>
     </>

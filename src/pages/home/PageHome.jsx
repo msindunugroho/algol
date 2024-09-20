@@ -4,6 +4,8 @@ import GalleryLink from "../../components/gallery_link/GalleryLink";
 import MiniArticle from "../../components/mini_article/MiniArticle";
 import PageHightlight from "../../components/page_hightlight/PageHightlight";
 import assets from "../../assets/assets";
+import Footer from "../../components/footer/Footer";
+import Navigation from "../../components/navigation/Navigation";
 
 
 const PageHome = () => {
@@ -11,6 +13,7 @@ const PageHome = () => {
     return(
         <section className="pageHome">
             <div className="pageHome_container flex flex-col gap-8 md:gap-20">
+                <Navigation/>
                 <Carousel/>
                 <MiniArticle/>
                 <PageHightlight
@@ -25,6 +28,7 @@ const PageHome = () => {
                 img={page_hightlight_sun}
                 path={"/sun"}/>
                 <GalleryLink/>
+                <Footer/>
             </div>
         </section>
     )

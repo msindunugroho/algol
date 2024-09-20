@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useEffect, useCallback, useState } from "react";
 import { getLocalData, useFetchAPODRandom } from "../../hooks/useFetchData";
-import { useEffect } from "react";
 import CardMiniArticle from "./card_mini_article/CardMiniArticle";
 import Header from "../header/Header";
 import { Link } from "react-router-dom";
@@ -18,7 +17,6 @@ const MiniArticle = () => {
     }, [])
 
     useEffect(() => {
-        console.log("isLocalUpdate :", isLocalUpdate)
         if(!isLocalUpdate) {
             setArticleRefresh(true);
         } else {
@@ -33,19 +31,20 @@ const MiniArticle = () => {
         }
     }, [articleLoading])
 
-    const activeHandler = (index) => {
+    const activeHandler = useCallback((index) => {
         if(articleActive) {
             setArticleActive(null)
         } else {
             setArticleActive(index + 1)
         }
-    }
+    }, [articleActive])
     return(
         <div className="mini_article">
             <div className="header_mini-artic w-full flex justify-between items-center">
-                <Header
-                textContent_title={'Astronomy in Pictures: A Brief Explanation'}
-                textContent_firstDesc={'Showcasing breathtaking visuals with a short explanation of what’s happening in outer space'}/>
+                <Header 
+                custom_header={`w-8/12 md:w-5/6`}
+                textContent_title={'Astronomy in Pictures'}
+                textContent_firstDesc={'A short explanation of what’s happening in outer space'}/>
                 <div className="navigate">
                     <Link to={"/article"}>
                     <p className="text-base text-grey-1  capitalize"><span className="pr-2">more article</span><i className="bi bi-arrow-right"></i></p>

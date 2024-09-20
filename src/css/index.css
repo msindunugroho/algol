@@ -34,6 +34,13 @@
     .btn.btn_quaternary_ln {
         @apply text-white-2 border-solid border-[2px] border-quaternary-3 hover:bg-quaternary-3;
     }
+    /* grey */
+    .btn.btn_grey{
+        @apply bg-grey-3 text-primary-5 hover:bg-grey-5;
+    }
+    .btn.btn_grey_ln {
+        @apply text-white-2 border-solid border-[2px] border-grey-3 hover:bg-grey-3 hover:text-primary-5;
+    }
     
 }
 
