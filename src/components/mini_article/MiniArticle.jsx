@@ -10,7 +10,7 @@ const MiniArticle = () => {
     const [articleActive, setArticleActive] = useState(null);
     const [isLocalUpdate, setIsLocalUpdate] = useState(null);
     const {loading:articleLoading} = useFetchAPODRandom("APOD_min_artc", articleRefresh, 3);
-    const {data: articleDataFromLocal} = JSON.parse(localStorage.getItem("APOD_min_artc"));
+    const articleDataFromLocal = JSON.parse(localStorage.getItem("APOD_min_artc"));
 
     useEffect(() => {
         setIsLocalUpdate(getLocalData("today", "APOD_min_artc"))
@@ -20,13 +20,21 @@ const MiniArticle = () => {
         if(!isLocalUpdate) {
             setArticleRefresh(true);
         } else {
-            setArticleData(articleDataFromLocal)
+            setArticleData(() => {
+                if(articleDataFromLocal) {
+                    return articleDataFromLocal.data
+                }
+            })
         }
     }, [isLocalUpdate]);
 
     useEffect(() => {
         if(!articleLoading && !isLocalUpdate) {
-            setArticleData(articleDataFromLocal);
+            setArticleData(() => {
+                if(articleDataFromLocal) {
+                    return articleDataFromLocal.data
+                }
+            });
             setArticleRefresh(false);
         }
     }, [articleLoading])
