@@ -10,7 +10,6 @@ import Navigation from "../../components/navigation/Navigation";
 
 const PageHome = () => {
     const {page_hightlight_asteroid, page_hightlight_sun} = assets.images;
-    alert("On Progress")
     return(
         <section className="pageHome">
             <div className="pageHome_container flex flex-col gap-8 md:gap-20">

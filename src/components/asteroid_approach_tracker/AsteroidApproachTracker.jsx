@@ -145,7 +145,7 @@ const AsteroidApproachTracker = () => {
         }
     }, [neoFeedData])
     return(
-        <div className="AsteroidApproachTracker p_formatted">
+        <div className="AsteroidApproachTracker p_formatted mt-16">
             <div className="contianer_AsteroidApproachTracker">
                 <Header
                 textContent_title={`Asteroid Approach Tracker`}/>
