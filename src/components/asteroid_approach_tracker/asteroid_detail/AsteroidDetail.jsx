@@ -27,8 +27,6 @@ const AsteroidDetail = ({neo_feed_data}) => {
                         const {close_approach_date, date, distence_lunar, estimated_diameter_meters, hazardous, id, asteroid_name, nasa_jpl_url, orbiting_body, relative_velocity_km_per_sec, radar_chart_data
                         } = datas;
 
-                        console.log(typeof nasa_jpl_url);
-
                         return(
                         <div key={index} className={`card h-[400px] overflow-hidden ${expandDetail == index? "w-[650px]  md:w-[700px]" : "w-[325px] md:w-[390px]" } bg-primary-3 p-4 md:p-6 rounded-lg flex`}>
                             <div className="asteroid_details flex-[1] flex flex-col items-center gap-6">

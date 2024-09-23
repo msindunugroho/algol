@@ -39,7 +39,7 @@ const MiniArticle = () => {
         }
     }, [articleActive])
     return(
-        <div className="mini_article">
+        <div className="mini_article p_formatted">
             <div className="header_mini-artic w-full flex justify-between items-center">
                 <Header 
                 custom_header={`w-8/12 md:w-5/6`}

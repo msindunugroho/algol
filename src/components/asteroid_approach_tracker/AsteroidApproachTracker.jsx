@@ -143,9 +143,6 @@ const AsteroidApproachTracker = () => {
         if(neoFeedData) {
             filterNeoFeedData(neoFeedData);
         }
-        if(filteredData) {
-            // console.log(filteredData)
-        }
     }, [neoFeedData])
     return(
         <div className="AsteroidApproachTracker p_formatted">

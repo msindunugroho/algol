@@ -5,7 +5,7 @@ import Header from "../header/Header";
 const GalleryLink = () => {
     const {gallery_link_1, gallery_link_2, gallery_link_3} = assets.images;
     return(
-        <div className="gallery_link">
+        <div className="gallery_link p_formatted">
             <div className="container_gallery-link w-full">
                 <Header
                 textContent_title={'gallery'}

@@ -65,5 +65,4 @@
     .hidde_scroller::-webkit-scrollbar {
     display: none; /* Chrome, Safari, dan Opera - sembunyikan scrollbar */
     }
-
 }

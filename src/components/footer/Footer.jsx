@@ -14,10 +14,10 @@ const Footer = () => {
                             <h1 className="text-clip_quaternary-tertiary text-4xl font-bold uppercase">algol</h1>
                         </div>
                         <ol className="links flex-[2] flex justify-end gap-2">
-                            <li><Link><p className="text-sm text-grey-5 capitalize font-medium">home</p></Link></li>
-                            <li><Link><p className="text-sm text-grey-5 capitalize font-medium">asteroid</p></Link></li>
-                            <li><Link><p className="text-sm text-grey-5 capitalize font-medium">sun</p></Link></li>
-                            <li><Link><p className="text-sm text-grey-5 capitalize font-medium">article</p></Link></li>
+                            <li><Link to={"/"}><p className="text-sm text-grey-5 capitalize font-medium">home</p></Link></li>
+                            <li><Link to={"/near-earth_objects"}><p className="text-sm text-grey-5 capitalize font-medium">NEO</p></Link></li>
+                            <li><Link to={"/sun"}><p className="text-sm text-grey-5 capitalize font-medium">sun</p></Link></li>
+                            <li><Link to={"/article"}><p className="text-sm text-grey-5 capitalize font-medium">article</p></Link></li>
                         </ol>
                     </div>
                     <div className="desc w-full p-4 relative z-[1] flex flex-col">
@@ -25,11 +25,11 @@ const Footer = () => {
                             <div className="nasa flex flex-col justify-center items-center gap-2">
                                 <p className="text-sm text-grey-3 text-center font-medium capitalize">in collaboration with</p> 
                                 <div className="colaboration_profile flex justify-center items-center gap-4">
-                                <a href="http://" target="_blank" className="flex flex-col justify-center items-center gap-1">
+                                <a href="" target="_blank" className="flex flex-col justify-center items-center gap-1">
                                     <img src={NASA_logo} alt="Nasa Logo" className="w-10 h-10 object-cover object-top" />
                                     <span className="text-xs text-grey-5 capitalize">NASA</span>
                                 </a>
-                                <a href="http://" target="_blank" className="flex flex-col justify-center items-center gap-1">
+                                <a href="/" target="_blank" className="flex flex-col justify-center items-center gap-1">
                                     <img src={profile_picture} alt="Nasa Logo" className="w-10 h-10 object-cover object-top" />
                                     <span className="text-xs text-grey-5 capitalize">sindu</span>
                                 </a>

@@ -1,14 +1,28 @@
 /* eslint-disable react/prop-types */
-import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
-const CustomTooltip = ({ active, payload, label }) => {
+const CustomTooltipVelocity = ({ active, payload}) => {
     if (active && payload && payload.length) {
         const { asteroid_name, x, y } = payload[0].payload;
         return (
             <div className="custom-tooltip p-2 rounded-lg bg-transparent_dark-8 border-solid border-quaternary-3 *:text-quaternary-3 *:capitalize">
                 <p className="label">{`Asteroid: ${asteroid_name}`}</p>
                 <p>{`Distance: ${x} Lunar`}</p>
-                <p>{`${label}: ${y} ${label === 'Diameter' ? 'Meter' : 'Km/s'}`}</p>
+                <p>{`Velocity: ${y} km/s`}</p>
+            </div>
+        );
+    }
+
+    return null;
+};
+const CustomTooltipDiameters = ({ active, payload}) => {
+    if (active && payload && payload.length) {
+        const { asteroid_name, x, y } = payload[0].payload;
+        return (
+            <div className="custom-tooltip p-2 rounded-lg bg-transparent_dark-8 border-solid border-quaternary-3 *:text-quaternary-3 *:capitalize">
+                <p className="label">{`Asteroid: ${asteroid_name}`}</p>
+                <p>{`Distance: ${x} Lunar`}</p>
+                <p>{`Diameter: ${y} M`}</p>
             </div>
         );
     }
@@ -19,7 +33,6 @@ const CustomTooltip = ({ active, payload, label }) => {
 
 const AsteroidDashboard = ({ neo_feed_data }) => {
     const { scatter_chart_data_diameter_distence, scatter_chart_data_velocity_distence } = neo_feed_data;
-    console.log(scatter_chart_data_velocity_distence)
 
     return (
         <div className="asteroid_dashboard mb-4 md">
@@ -31,7 +44,7 @@ const AsteroidDashboard = ({ neo_feed_data }) => {
                                 <CartesianGrid opacity={.2}/>
                                 <XAxis type="number" dataKey="x" name="Distance" unit=" Lunar" />
                                 <YAxis type="number" dataKey="y" name="Diameter" unit=" M" />
-                                <Tooltip content={<CustomTooltip/>} cursor={{ strokeDasharray: '3 3' }} />
+                                <Tooltip content={<CustomTooltipDiameters/>} cursor={{ strokeDasharray: '3 3' }} />
                                 <Scatter name="Asteroid" data={scatter_chart_data_diameter_distence} fill="#8884d8" />
                             </ScatterChart>
                         </ResponsiveContainer>
@@ -42,7 +55,7 @@ const AsteroidDashboard = ({ neo_feed_data }) => {
                                 <CartesianGrid opacity={.2}/>
                                 <XAxis type="number" dataKey="x" name="Distance" unit=" Lunar" />
                                 <YAxis type="number" dataKey="y" name="Velocity" unit=" Km/s" />
-                                <Tooltip content={<CustomTooltip/>} cursor={{ strokeDasharray: '3 3' }} />
+                                <Tooltip content={<CustomTooltipVelocity/>} cursor={{ strokeDasharray: '3 3' }} />
                                 <Scatter name="Asteroid" data={scatter_chart_data_velocity_distence} fill="#8884d8" />
                             </ScatterChart>
                         </ResponsiveContainer>

@@ -18,13 +18,23 @@ const DailyCosmicSnapshot = () => {
     const [APODLocalData, setAPODLocalData] = useState(null); // state untuk menampung data hasil fetch yang sudah di simpan di local storage 
     const [isFetchAPOD, setIsFetchAPOD] = useState(true); // state untuk triger ketika user meng-klik component RandomSnapshot
     const [isfetchRandom, setIsFetchRandom] = useState(false); // State untuk memicu fetch acak
+    const [colldown, setCooldown] = useState(10);
+    const [isCooldown, setIsColldown] = useState(false);
+    const [credits, setCredits] = useState(null);
     const headerTitle = "Daily Cosmic Snapshot";
 
     const {loading: loadingFetchDataAPOD} = useFetchData("APOD", isFetchAPOD);
-    const {loading:loadingFetchDataRandom} = useFetchAPODRandom("APOD_random", isfetchRandom, 15);
+    const {loading:loadingFetchDataRandom} = useFetchAPODRandom("APOD_random", isfetchRandom, 7);
 
     useEffect(() => {
-        
+        const creditsFromLocal = JSON.parse(localStorage.getItem("credits"));
+        if(!creditsFromLocal || creditsFromLocal.date !== formattedCurrentDate ) {
+            localStorage.setItem("credits", JSON.stringify({data: 5, date: formattedCurrentDate}));
+        } 
+        setCredits( () => {
+            const {data} = JSON.parse(localStorage.getItem("credits"));
+            return data;
+        })
     }, [])
 
     useEffect(() => {
@@ -34,11 +44,30 @@ const DailyCosmicSnapshot = () => {
             setAPODLocalData(data);
         }
     }, [loadingFetchDataAPOD]);
-
+    
     function getRandomSnapshotHandler() {
-        // Reset APODLocalData sebelum memulai fetch baru agar pasti memicu re-render
-        setAPODLocalData(null);
-        setIsFetchRandom(true);
+        if(credits > 0) {
+            localStorage.setItem("credits", JSON.stringify({data: credits - 1, date: formattedCurrentDate}))
+            setCredits(() => {
+                const {data} = JSON.parse(localStorage.getItem("credits"));
+                return data;
+            })
+            setAPODLocalData(null);
+            setIsFetchRandom(true);
+            setCooldown(10);
+            // Clear any existing interval
+            let interval = setInterval(() => {
+                setCooldown(prevCooldown => {
+                    if (prevCooldown <= 1) {
+                        setIsColldown(false);
+                        clearInterval(interval); // Stop interval when cooldown reaches 0
+                        return 0; // Set cooldown to 0
+                    }
+                    setIsColldown(true)
+                    return prevCooldown - 1; // Decrease cooldown by 1
+                });
+            }, 1000);
+        }
     }
     
     useEffect(() => {
@@ -76,8 +105,7 @@ const DailyCosmicSnapshot = () => {
     const handleUpdateDate = useCallback((newDate) => {
         const updateDate = lastweekData.find((data) => data.date === newDate);
         setTodayData(updateDate);
-        console.log(`Updated todayDate: ${updateDate}`);
-    }, []);
+    }, [lastweekData]);
 
     return (
         <section className="daily_cosmic p_formatted">
@@ -105,7 +133,11 @@ const DailyCosmicSnapshot = () => {
                 }
                 {
                     todayData &&
-                    <RandomSnapshot onClick={getRandomSnapshotHandler}/>
+                    <RandomSnapshot 
+                    onClick={getRandomSnapshotHandler}
+                    isCooldown={isCooldown}
+                    cooldown={colldown}
+                    credits={credits}/>
                 }
             </div>
         </section>
