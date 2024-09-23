@@ -32,8 +32,10 @@ const DailyCosmicSnapshot = () => {
             localStorage.setItem("credits", JSON.stringify({data: 5, date: formattedCurrentDate}));
         } 
         setCredits( () => {
-            const {data} = JSON.parse(localStorage.getItem("credits"));
-            return data;
+            const creditsFromLocal = JSON.parse(localStorage.getItem("credits"));
+            if(creditsFromLocal) {
+                return creditsFromLocal.data;
+            }
         })
     }, [])
 
@@ -49,8 +51,10 @@ const DailyCosmicSnapshot = () => {
         if(credits > 0) {
             localStorage.setItem("credits", JSON.stringify({data: credits - 1, date: formattedCurrentDate}))
             setCredits(() => {
-                const {data} = JSON.parse(localStorage.getItem("credits"));
-                return data;
+                const creditsFromLocal = JSON.parse(localStorage.getItem("credits"));
+                if(creditsFromLocal) {
+                    return creditsFromLocal.data;
+                }
             })
             setAPODLocalData(null);
             setIsFetchRandom(true);
